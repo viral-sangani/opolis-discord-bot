@@ -3,6 +3,7 @@ import { Client, Intents } from "discord.js";
 import dotenv from "dotenv";
 import { connectDatabase } from "./database/connectDatabase";
 import { onInteraction } from "./events/onInteraction";
+import { onReady } from "./events/onReady";
 
 dotenv.config();
 (async () => {
@@ -10,11 +11,11 @@ dotenv.config();
     throw new Error("Please set the BOT_TOKEN environment variable.");
   }
 
-  const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
-  client.once("ready", () => {
-    console.log("Ready!");
+  const client = new Client({
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
   });
+
+  client.on("ready", async () => await onReady(client));
 
   client.on("interactionCreate", async (interaction) => {
     await onInteraction(interaction);
