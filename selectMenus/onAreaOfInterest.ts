@@ -12,12 +12,11 @@ export const onAreaOfInterest = async (interaction: SelectMenuInteraction) => {
     const filter = (m: any) => interaction.user.id === m.author.id;
     var messages = await interaction.channel?.awaitMessages({
       filter,
-      time: 10000,
+      time: 60000 * 10,
       max: 1,
       errors: ["time"],
     });
     user.lastProjectWorkedOn = messages?.first()?.content ?? "";
-    console.log("messages?.first()?.content", messages?.first()?.content);
     await updateUserData(user);
   } catch (e) {
     interaction.followUp("You did not enter any input!");

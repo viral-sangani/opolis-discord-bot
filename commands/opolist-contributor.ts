@@ -6,12 +6,12 @@ import {
 } from "discord.js";
 import { Command } from "../interface/Command";
 import { getUserData } from "../modules/getUesrData";
+import { updateUserData } from "../modules/updateUserData";
 import { experienceList } from "../utils/constants";
-import { updateUserData } from "./../modules/updateUserData";
 
 export const onTest: Command = {
   data: new SlashCommandBuilder()
-    .setName("start-work-survey")
+    .setName("opolis-contribuutor")
     .setDescription(
       "Start a survey and we will help you meet the right people to work with."
     ),

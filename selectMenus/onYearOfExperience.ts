@@ -11,7 +11,7 @@ export const onYearOfExperience = async (
   interaction: SelectMenuInteraction
 ) => {
   var user = await getUserData(interaction.user.id);
-  console.log("interaction.values[0]", interaction.values[0]);
+
   user.yearsOfExperience = parseInt(interaction.values[0]);
   await updateUserData(user);
 
