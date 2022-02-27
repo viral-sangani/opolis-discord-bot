@@ -3,7 +3,7 @@ import {
   MessageSelectMenu,
   SelectMenuInteraction,
 } from "discord.js";
-import { getUserData } from "../modules/getUesrData";
+import { getUserData } from "../modules/getUserData";
 import { updateUserData } from "../modules/updateUserData";
 import { areaOfInterest } from "../utils/constants";
 

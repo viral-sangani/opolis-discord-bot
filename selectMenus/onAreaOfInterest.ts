@@ -1,5 +1,6 @@
 import { SelectMenuInteraction } from "discord.js";
-import { getUserData } from "../modules/getUesrData";
+import { checkCompatibility } from "../modules/checkCompatibility";
+import { getUserData } from "../modules/getUserData";
 import { updateUserData } from "../modules/updateUserData";
 
 export const onAreaOfInterest = async (interaction: SelectMenuInteraction) => {
@@ -18,6 +19,7 @@ export const onAreaOfInterest = async (interaction: SelectMenuInteraction) => {
     });
     user.lastProjectWorkedOn = messages?.first()?.content ?? "";
     await updateUserData(user);
+    await checkCompatibility(interaction);
   } catch (e) {
     interaction.followUp("You did not enter any input!");
   }

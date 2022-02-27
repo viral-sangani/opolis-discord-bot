@@ -27,7 +27,53 @@ export const experienceInYearsList = [
   { label: "10", description: "I have 10 Years experience", value: "10" },
 ];
 
+export const experienceRangeList = [
+  {
+    label: "1 - 3",
+    description: "I need people with 1-3 years of experience",
+    value: "1 - 3",
+  },
+  {
+    label: "3 - 5",
+    description: "I need people with 3-5 years of experience",
+    value: "3 - 5",
+  },
+  {
+    label: "5 - 7",
+    description: "I need people with 5-7 years of experience",
+    value: "5 - 7",
+  },
+  {
+    label: "7 - 10",
+    description: "I need people with 7-10 years of experience",
+    value: "7 - 10",
+  },
+  {
+    label: "10 - 12",
+    description: "I need people with 10-12 years of experience",
+    value: "10 - 12",
+  },
+  {
+    label: "12 - 15",
+    description: "I need people with 12-15 years of experience",
+    value: "12 - 15",
+  },
+  {
+    label: "15+",
+    description: "I need people with 15+ years of experience",
+    value: "15+",
+  },
+];
+
 export const areaOfInterest = [
+  { label: "DAOs", value: "DAOs" },
+  { label: "DeFi", value: "DeFi" },
+  { label: "NFTs", value: "NFTs" },
+  { label: "Public Goods", value: "Public Goods" },
+  { label: "Metaverse", value: "Metaverse" },
+];
+
+export const projectType = [
   { label: "DAOs", value: "DAOs" },
   { label: "DeFi", value: "DeFi" },
   { label: "NFTs", value: "NFTs" },

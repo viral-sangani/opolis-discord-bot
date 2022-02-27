@@ -5,13 +5,13 @@ import {
   MessageSelectMenu,
 } from "discord.js";
 import { Command } from "../interface/Command";
-import { getUserData } from "../modules/getUesrData";
+import { getUserData } from "../modules/getUserData";
 import { updateUserData } from "../modules/updateUserData";
 import { experienceList } from "../utils/constants";
 
-export const onTest: Command = {
+export const onOpolisProject: Command = {
   data: new SlashCommandBuilder()
-    .setName("opolis-contribuutor")
+    .setName("opolis-project")
     .setDescription(
       "Start a survey and we will help you meet the right people to work with."
     ),
@@ -42,12 +42,12 @@ export const onTest: Command = {
     try {
       const row = new MessageActionRow().addComponents(
         new MessageSelectMenu()
-          .setCustomId("experience")
+          .setCustomId("experienceProject")
           .setPlaceholder("Nothing selected")
           .addOptions(experienceList)
       );
       await interaction.followUp({
-        content: `Great! I need few more information from you. What type of experience do you have?`,
+        content: `Great! I need few more information from you. What role do you need for you project?`,
         components: [row],
       });
     } catch (e) {
