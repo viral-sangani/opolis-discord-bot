@@ -24,6 +24,8 @@
   </p>
 </div>
 
+![Poster](/assets/Opolis-Discord-Bot.png)
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -54,6 +56,7 @@
 
 The above project opolis-discord-bot has been developed as a submission for ETH Denver Hackathon under the category - Opolis (Future of Finding Work). Hence, as mentioned in the requisites of this respective bounty it is an open-source Discord bot that collects information from "contributors" and "recruiters".
 Information that gets collected from a "contributor":
+
   1. Contributor's name and email.
   2. His/ Her GitHub username, website and Twitter handler.
   3. Type of experience ("Dev", "Community", "Marketing", "Product", "Ops").
@@ -65,9 +68,10 @@ Information that gets collected from a "contributor":
   9. A contributor can only update his information after 6 hours of time so as to avoid any brute force attack.
 
 Information that gets collected  from a "recruiter":
+
   1. Recruiter's name, email and his company's name.
   2. What kind of role he/she is looking for ("Dev", "Community", "Marketing", "Product", "Ops").
-  3.  What is the experience range he/she is expecting ("1-3" years, "3-5" years, "5-7" years, "7-10" years, "10-12" years, "12-15" years, "15+")
+  3. What is the experience range he/she is expecting ("1-3" years, "3-5" years, "5-7" years, "7-10" years, "10-12" years, "12-15" years, "15+")
   4. Project type ("DAOs", "DeFi", "NFTs", "Public Goods", "Metaverse").
   5. Preferred Location ("Remote", "Asia", "Canada", "Europe", "India", "United Kingdom", "United States").
   6. Work Type ("Full Time", "Part Time", "Contract", "Freelance", "Internship").
