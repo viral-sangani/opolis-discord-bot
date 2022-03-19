@@ -1,5 +1,5 @@
 import { Interaction } from "discord.js";
-import { CommandList } from "../commands/_commandList";
+import { CommandList } from "../commands/commandList";
 import { onContributorPreferredLocation } from "../selectMenus/onContributorPreferredLocation";
 import { onContributorWorkType } from "../selectMenus/onContributorWorkType";
 import { onExperinece } from "../selectMenus/onExperience";

@@ -18,7 +18,8 @@
   },
   "scripts": {
     "start": "ts-node ./index.ts",
-    "deploy-commands": "ts-node ./deploy-commands.ts"
+    "deploy-commands": "ts-node ./deploy-commands.ts",
+    "start-heroku": "rm -rf dist; tsc; node dist/index.js"
   },
   "devDependencies": {
   }
