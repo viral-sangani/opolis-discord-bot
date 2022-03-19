@@ -1,13 +1,14 @@
-import dotenv from "dotenv";
 import { connect } from "mongoose";
 
-dotenv.config();
+// dotenv.config();
 
-if (!process.env.MONGO_URI) {
-  throw new Error("Please set the MONGO_URI environment variable.");
+if (!process.env.MONGODB_PASSWORD) {
+  throw new Error("Please set the MONGODB_PASSWORD environment variable.");
 }
 
 export const connectDatabase = async () => {
-  await connect(process.env.MONGO_URI!);
+  await connect(
+    `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.jheym.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  );
   console.log("Database Connected!");
 };
