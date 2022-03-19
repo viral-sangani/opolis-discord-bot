@@ -83,7 +83,7 @@ export const acceptReply = async (
 ) => {
   var messages = await interaction.channel?.awaitMessages({
     filter,
-    time: 1000 * 60 * 2,
+    time: 1000 * 60 * 10,
     max: 1,
     errors: ["time"],
   });
