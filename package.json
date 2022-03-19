@@ -14,7 +14,7 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "start": "nodemon ./index.ts",
+    "start": "ts-node ./index.ts",
     "deploy-commands": "ts-node ./deploy-commands.ts"
   },
   "devDependencies": {
