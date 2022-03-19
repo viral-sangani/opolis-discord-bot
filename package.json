@@ -11,6 +11,9 @@
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "mongoose": "^6.2.3",
+    "ts-node": "^10.5.0",
+    "@types/node": "^17.0.20",
+    "nodemon": "^2.0.15",
     "typescript": "^4.5.5"
   },
   "scripts": {
@@ -18,8 +21,5 @@
     "deploy-commands": "ts-node ./deploy-commands.ts"
   },
   "devDependencies": {
-    "@types/node": "^17.0.20",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.5.0"
   }
 }
