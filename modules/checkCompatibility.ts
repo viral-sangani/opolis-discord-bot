@@ -46,12 +46,12 @@ export const checkCompatibility = async (
 
       // Send DM to project owner
       await projectDM?.send({
-        content: `Congratulations!! ${contributorUser} has matched all the criteria mentioned by you`,
+        content: `Congratulations!! ${contributorUser} has matched 51% of the criteria mentioned by you`,
         embeds: [projectEmbed],
       });
 
       await dm?.send({
-        content: `Congratulations!! You have matched all the criteria mentioned by ${projectUser}.`,
+        content: `Congratulations!! You have matched 51% of the criteria mentioned by ${projectUser}.`,
         embeds: [contributorEmbed],
       });
     }
