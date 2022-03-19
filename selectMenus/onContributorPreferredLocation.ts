@@ -21,12 +21,15 @@ export const onContributorPreferredLocation = async (
     });
     user.lastProjectWorkedOn = messages?.first()?.content ?? "";
     await updateUserData(user);
-    await checkCompatibility(interaction, interaction.user.id);
   } catch (e) {
     interaction.followUp("You did not enter any input!");
   }
 
-  interaction.reply(
+  interaction.followUp(
     "That's all we need. You will find us in your DM when we find a match for you."
   );
+  await checkCompatibility(interaction, interaction.user.id);
+  user.hasSubmitted = true;
+  user.lastUpdatedAt = Date.now();
+  await updateUserData(user);
 };

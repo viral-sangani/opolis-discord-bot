@@ -15,6 +15,8 @@ export interface UserInt extends Document {
   lastProjectWorkedOn: string;
   preferredLocation: string;
   workType: string;
+  lastUpdatedAt: number;
+  hasSubmitted: boolean;
 }
 
 export const User = new Schema({
@@ -32,6 +34,8 @@ export const User = new Schema({
   lastProjectWorkedOn: String,
   preferredLocation: String,
   workType: String,
+  lastUpdatedAt: Number,
+  hasSubmitted: Boolean,
 });
 
 export default model<UserInt>("user", User);

@@ -14,6 +14,22 @@ export const experienceList = [
   { label: "Ops", description: "I am a Ops Developer", value: "Ops" },
 ];
 
+export const experienceProjectList = [
+  { label: "Dev", description: "Need a Developer", value: "Dev" },
+  {
+    label: "Community",
+    description: "Need a Community Relations Manager",
+    value: "Community",
+  },
+  {
+    label: "Marketing",
+    description: "Need Marketing Person",
+    value: "Marketing",
+  },
+  { label: "Product", description: "Need Product Manager", value: "Product" },
+  { label: "Ops", description: "Need Ops Developer", value: "Ops" },
+];
+
 export const experienceInYearsList = [
   { label: "1", description: "I have 1 Year experience", value: "1" },
   { label: "2", description: "I have 2 Years experience", value: "2" },

@@ -6,7 +6,7 @@ import {
 } from "discord.js";
 import { Command } from "../interface/Command";
 import { updateProjectUserData } from "../modules/updateProjectUserData";
-import { experienceList } from "../utils/constants";
+import { experienceProjectList } from "../utils/constants";
 import { getProjectUserData } from "./../modules/getProjectUser";
 
 export const onOpolisProject: Command = {
@@ -20,46 +20,59 @@ export const onOpolisProject: Command = {
     await interaction.deferReply();
     var user = await getProjectUserData(discordUser.id);
 
-    const filter = (m: any) => discordUser.id === m.author.id;
-    await interaction.editReply("What is your name?");
-    try {
-      var messages = await acceptReply(interaction, filter);
-      user.name = messages?.first()?.content ?? "";
-    } catch (e) {
-      interaction.followUp("You did not enter any input!");
-    }
-
-    interaction.followUp(`Nice to meet you ${user.name}. What is your email?`);
-    try {
-      messages = await acceptReply(interaction, filter);
-      user.email = messages?.first()?.content ?? "";
-    } catch (e) {
-      interaction.followUp("You did not enter any input!");
-    }
-
-    interaction.followUp(`Great. What is your Project/Company's name?`);
-    try {
-      messages = await acceptReply(interaction, filter);
-      user.email = messages?.first()?.content ?? "";
-    } catch (e) {
-      interaction.followUp("You did not enter any input!");
-    }
-
-    await updateProjectUserData(user);
-
-    try {
-      const row = new MessageActionRow().addComponents(
-        new MessageSelectMenu()
-          .setCustomId("experienceProject")
-          .setPlaceholder("Nothing selected")
-          .addOptions(experienceList)
+    if (
+      user.hasSubmitted &&
+      user.lastUpdatedAt &&
+      user.lastUpdatedAt + 1000 * 60 * 60 * 6 > Date.now()
+    ) {
+      interaction.followUp(
+        "You have already submitted your data! You can only edit your data once every 6 hours."
       );
-      await interaction.followUp({
-        content: `Great! I need few more information from you. What role do you need for you project?`,
-        components: [row],
-      });
-    } catch (e) {
-      interaction.followUp("You did not enter any input!");
+      return;
+    } else {
+      const filter = (m: any) => discordUser.id === m.author.id;
+      await interaction.editReply("What is your name?");
+      try {
+        var messages = await acceptReply(interaction, filter);
+        user.name = messages?.first()?.content ?? "";
+      } catch (e) {
+        interaction.followUp("You did not enter any input!");
+      }
+
+      interaction.followUp(
+        `Nice to meet you ${user.name}. What is your email?`
+      );
+      try {
+        messages = await acceptReply(interaction, filter);
+        user.email = messages?.first()?.content ?? "";
+      } catch (e) {
+        interaction.followUp("You did not enter any input!");
+      }
+
+      interaction.followUp(`Great. What is your Project/Company's name?`);
+      try {
+        messages = await acceptReply(interaction, filter);
+        user.companyName = messages?.first()?.content ?? "";
+      } catch (e) {
+        interaction.followUp("You did not enter any input!");
+      }
+
+      await updateProjectUserData(user);
+
+      try {
+        const row = new MessageActionRow().addComponents(
+          new MessageSelectMenu()
+            .setCustomId("experienceProject")
+            .setPlaceholder("Nothing selected")
+            .addOptions(experienceProjectList)
+        );
+        await interaction.followUp({
+          content: `Great! I need few more information from you. What role do you need for you project?`,
+          components: [row],
+        });
+      } catch (e) {
+        interaction.followUp("You did not enter any input!");
+      }
     }
   },
 };
