@@ -14,11 +14,12 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "start": "ts-node ./index.ts",
+    "start": "nodemon ./index.ts",
     "deploy-commands": "ts-node ./deploy-commands.ts"
   },
   "devDependencies": {
     "@types/node": "^17.0.20",
+    "nodemon": "^2.0.15",
     "ts-node": "^10.5.0"
   }
 }

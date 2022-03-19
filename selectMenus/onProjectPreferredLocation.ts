@@ -5,25 +5,27 @@ import {
 } from "discord.js";
 import { getProjectUserData } from "../modules/getProjectUser";
 import { updateProjectUserData } from "../modules/updateProjectUserData";
-import { preferredLocation } from "../utils/constants";
+import { workType } from "../utils/constants";
 
-export const onProjectType = async (interaction: SelectMenuInteraction) => {
+export const onProjectPreferredLocation = async (
+  interaction: SelectMenuInteraction
+) => {
   var user = await getProjectUserData(interaction.user.id);
-  user.projectType = interaction.values[0];
+  user.preferredLocation = interaction.values[0];
   await updateProjectUserData(user);
 
   try {
     const row = new MessageActionRow().addComponents(
       new MessageSelectMenu()
-        .setCustomId("projectPreferredLocation")
+        .setCustomId("projectWorkType")
         .setPlaceholder("Nothing selected")
-        .addOptions(preferredLocation)
+        .addOptions(workType)
     );
     await interaction.reply({
-      content: `What is your preferred work location?`,
+      content: `What kind of work role is this?`,
       components: [row],
     });
   } catch (e) {
-    interaction.reply("You did not enter any input!");
+    interaction.followUp("You did not enter any input!");
   }
 };

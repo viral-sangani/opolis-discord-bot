@@ -9,6 +9,8 @@ export interface ProjectUserInt extends Document {
   role: string;
   experienceRange: string;
   projectType: string;
+  preferredLocation: string;
+  workType: string;
 }
 
 export const ProjectUser = new Schema({
@@ -20,6 +22,8 @@ export const ProjectUser = new Schema({
   role: String,
   experienceRange: String,
   projectType: String,
+  preferredLocation: String,
+  workType: String,
 });
 
 export default model<ProjectUserInt>("projectUser", ProjectUser);

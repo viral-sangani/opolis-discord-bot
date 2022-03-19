@@ -37,6 +37,30 @@ export const onOpolisContributor: Command = {
       interaction.followUp("You did not enter any input!");
     }
 
+    interaction.followUp(`Thanks. What is your Github Username?`);
+    try {
+      messages = await acceptReply(interaction, filter);
+      user.githubUsername = messages?.first()?.content ?? "";
+    } catch (e) {
+      interaction.followUp("You did not enter any input!");
+    }
+
+    interaction.followUp(`Great. What is your Website/Portfolio site?`);
+    try {
+      messages = await acceptReply(interaction, filter);
+      user.website = messages?.first()?.content ?? "";
+    } catch (e) {
+      interaction.followUp("You did not enter any input!");
+    }
+
+    interaction.followUp(`Awesome. What is your Twitter handler?`);
+    try {
+      messages = await acceptReply(interaction, filter);
+      user.twitter = messages?.first()?.content ?? "";
+    } catch (e) {
+      interaction.followUp("You did not enter any input!");
+    }
+
     await updateUserData(user);
 
     try {

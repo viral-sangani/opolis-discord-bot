@@ -5,9 +5,9 @@ import {
   MessageSelectMenu,
 } from "discord.js";
 import { Command } from "../interface/Command";
-import { getUserData } from "../modules/getUserData";
-import { updateUserData } from "../modules/updateUserData";
+import { updateProjectUserData } from "../modules/updateProjectUserData";
 import { experienceList } from "../utils/constants";
+import { getProjectUserData } from "./../modules/getProjectUser";
 
 export const onOpolisProject: Command = {
   data: new SlashCommandBuilder()
@@ -18,7 +18,7 @@ export const onOpolisProject: Command = {
   run: async (interaction) => {
     const { user: discordUser } = interaction;
     await interaction.deferReply();
-    var user = await getUserData(discordUser.id);
+    var user = await getProjectUserData(discordUser.id);
 
     const filter = (m: any) => discordUser.id === m.author.id;
     await interaction.editReply("What is your name?");
@@ -37,7 +37,15 @@ export const onOpolisProject: Command = {
       interaction.followUp("You did not enter any input!");
     }
 
-    await updateUserData(user);
+    interaction.followUp(`Great. What is your Project/Company's name?`);
+    try {
+      messages = await acceptReply(interaction, filter);
+      user.email = messages?.first()?.content ?? "";
+    } catch (e) {
+      interaction.followUp("You did not enter any input!");
+    }
+
+    await updateProjectUserData(user);
 
     try {
       const row = new MessageActionRow().addComponents(
@@ -62,7 +70,7 @@ export const acceptReply = async (
 ) => {
   var messages = await interaction.channel?.awaitMessages({
     filter,
-    time: 10000,
+    time: 1000 * 60 * 2,
     max: 1,
     errors: ["time"],
   });

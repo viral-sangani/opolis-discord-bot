@@ -80,3 +80,21 @@ export const projectType = [
   { label: "Public Goods", value: "Public Goods" },
   { label: "Metaverse", value: "Metaverse" },
 ];
+
+export const workType = [
+  { label: "Full Time", value: "Full Time" },
+  { label: "Part Time", value: "Part Time" },
+  { label: "Contract", value: "Contract" },
+  { label: "Freelance", value: "Freelance" },
+  { label: "Internship", value: "Internship" },
+];
+
+export const preferredLocation = [
+  { label: "Remote", value: "Remote" },
+  { label: "Asia", value: "Asia" },
+  { label: "Canada", value: "Canada" },
+  { label: "Europe", value: "Europe" },
+  { label: "India", value: "India" },
+  { label: "United Kingdom", value: "United Kingdom" },
+  { label: "United States", value: "United States" },
+];
