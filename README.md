@@ -78,6 +78,12 @@ Information that gets collected  from a "recruiter":
 
 And where there's a match 51% of these items, making the connect between the contributor and project via a private DM between the two candidates.
 
+**All the data is store in MongoDB, which allows us to persist the data. Project recruiters can post multiple requirements for multiple positions and contributors can apply for any one of the position.**
+
+__Note that one can only change/update their information every 6 hours. This can be easily configured in the backend for the user's convenience.__
+
+## (All the conversations with BOT are private and only user can see that texts. This feature is implemented after creating [Demo video](https://www.canva.com/design/DAE7kTSa3uI/Y76-wqQo6Qd1TowWZobSPg/watch))
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
