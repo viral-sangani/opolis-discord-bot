@@ -24,8 +24,12 @@ export const onContributorWorkType = async (
     await interaction.reply({
       content: `Where would you like to work from?`,
       components: [row],
+      ephemeral: true,
     });
   } catch (e) {
-    interaction.followUp("You did not enter any input!");
+    interaction.followUp({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 };

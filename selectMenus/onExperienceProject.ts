@@ -24,8 +24,12 @@ export const onExperienceProject = async (
     await interaction.reply({
       content: `How much experience do you need for the new Role?`,
       components: [row],
+      ephemeral: true,
     });
   } catch (e) {
-    interaction.followUp("You did not enter any input!");
+    interaction.followUp({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 };

@@ -22,8 +22,12 @@ export const onProjectType = async (interaction: SelectMenuInteraction) => {
     await interaction.reply({
       content: `What is your preferred work location?`,
       components: [row],
+      ephemeral: true,
     });
   } catch (e) {
-    interaction.reply("You did not enter any input!");
+    interaction.reply({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 };

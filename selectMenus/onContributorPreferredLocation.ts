@@ -9,7 +9,10 @@ export const onContributorPreferredLocation = async (
   var user = await getUserData(interaction.user.id);
   user.workType = interaction.values[0];
   await updateUserData(user);
-  interaction.reply("Last question! What is the last project you worked on?");
+  interaction.reply({
+    content: "Last question! What is the last project you worked on?",
+    ephemeral: true,
+  });
 
   try {
     const filter = (m: any) => interaction.user.id === m.author.id;
@@ -19,15 +22,21 @@ export const onContributorPreferredLocation = async (
       max: 1,
       errors: ["time"],
     });
+    messages?.first()?.delete();
     user.lastProjectWorkedOn = messages?.first()?.content ?? "";
     await updateUserData(user);
   } catch (e) {
-    interaction.followUp("You did not enter any input!");
+    interaction.followUp({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 
-  interaction.followUp(
-    "That's all we need. You will find us in your DM when we find a match for you."
-  );
+  interaction.followUp({
+    content:
+      "That's all we need. You will find us in your DM when we find a match for you.",
+    ephemeral: true,
+  });
   await checkCompatibility(interaction, interaction.user.id);
   user.hasSubmitted = true;
   user.lastUpdatedAt = Date.now();

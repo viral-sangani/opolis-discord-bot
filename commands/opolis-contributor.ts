@@ -17,7 +17,7 @@ export const onOpolisContributor: Command = {
     ),
   run: async (interaction) => {
     const { user: discordUser } = interaction;
-    await interaction.deferReply();
+    // await interaction.deferReply();
     var user = await getUserData(discordUser.id);
 
     if (
@@ -25,52 +25,88 @@ export const onOpolisContributor: Command = {
       user.lastUpdatedAt &&
       user.lastUpdatedAt + 1000 * 60 * 60 * 6 > Date.now()
     ) {
-      interaction.followUp(
-        "You have already submitted your data! You can only edit your data once every 6 hours."
-      );
+      interaction.followUp({
+        content:
+          "You have already submitted your data! You can only edit your data once every 6 hours.",
+        ephemeral: true,
+      });
       return;
     } else {
       const filter = (m: any) => discordUser.id === m.author.id;
-      await interaction.editReply("What is your name?");
+      await interaction.reply({
+        content: "What is your name?",
+        ephemeral: true,
+      });
       try {
         var messages = await acceptReply(interaction, filter);
+        // delete the message
+        messages?.first()?.delete();
         user.name = messages?.first()?.content ?? "";
       } catch (e) {
-        interaction.followUp("You did not enter any input!");
+        interaction.followUp({
+          content: "You did not enter any input!",
+          ephemeral: true,
+        });
       }
 
-      interaction.followUp(
-        `Nice to meet you ${user.name}. What is your email?`
-      );
+      interaction.followUp({
+        content: `Nice to meet you ${user.name}. What is your email?`,
+        ephemeral: true,
+      });
       try {
         messages = await acceptReply(interaction, filter);
+        messages?.first()?.delete();
         user.email = messages?.first()?.content ?? "";
       } catch (e) {
-        interaction.followUp("You did not enter any input!");
+        interaction.followUp({
+          content: "You did not enter any input!",
+          ephemeral: true,
+        });
       }
 
-      interaction.followUp(`Thanks. What is your Github Username?`);
+      interaction.followUp({
+        content: `Thanks. What is your Github Username?`,
+        ephemeral: true,
+      });
       try {
         messages = await acceptReply(interaction, filter);
+        messages?.first()?.delete();
         user.githubUsername = messages?.first()?.content ?? "";
       } catch (e) {
-        interaction.followUp("You did not enter any input!");
+        interaction.followUp({
+          content: "You did not enter any input!",
+          ephemeral: true,
+        });
       }
 
-      interaction.followUp(`Great. What is your Website/Portfolio site?`);
+      interaction.followUp({
+        content: `Great. What is your Website/Portfolio site?`,
+        ephemeral: true,
+      });
       try {
         messages = await acceptReply(interaction, filter);
+        messages?.first()?.delete();
         user.website = messages?.first()?.content ?? "";
       } catch (e) {
-        interaction.followUp("You did not enter any input!");
+        interaction.followUp({
+          content: "You did not enter any input!",
+          ephemeral: true,
+        });
       }
 
-      interaction.followUp(`Awesome. What is your Twitter handler?`);
+      interaction.followUp({
+        content: `Awesome. What is your Twitter handler?`,
+        ephemeral: true,
+      });
       try {
         messages = await acceptReply(interaction, filter);
+        messages?.first()?.delete();
         user.twitter = messages?.first()?.content ?? "";
       } catch (e) {
-        interaction.followUp("You did not enter any input!");
+        interaction.followUp({
+          content: "You did not enter any input!",
+          ephemeral: true,
+        });
       }
 
       await updateUserData(user);
@@ -85,9 +121,13 @@ export const onOpolisContributor: Command = {
         await interaction.followUp({
           content: `Great! I need few more information from you. What type of experience do you have?`,
           components: [row],
+          ephemeral: true,
         });
       } catch (e) {
-        interaction.followUp("You did not enter any input!");
+        interaction.followUp({
+          content: "You did not enter any input!",
+          ephemeral: true,
+        });
       }
     }
   },

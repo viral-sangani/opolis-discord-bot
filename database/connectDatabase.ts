@@ -1,5 +1,6 @@
+import dotenv from "dotenv";
 import { connect } from "mongoose";
-
+dotenv.config();
 // dotenv.config();
 
 if (!process.env.MONGODB_PASSWORD) {

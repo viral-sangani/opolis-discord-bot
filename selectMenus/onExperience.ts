@@ -22,8 +22,12 @@ export const onExperinece = async (interaction: SelectMenuInteraction) => {
     await interaction.reply({
       content: `How much experience do you have?`,
       components: [row],
+      ephemeral: true,
     });
   } catch (e) {
-    interaction.followUp("You did not enter any input!");
+    interaction.followUp({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 };

@@ -24,8 +24,12 @@ export const onProjectPreferredLocation = async (
     await interaction.reply({
       content: `What kind of work role is this?`,
       components: [row],
+      ephemeral: true,
     });
   } catch (e) {
-    interaction.followUp("You did not enter any input!");
+    interaction.followUp({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 };

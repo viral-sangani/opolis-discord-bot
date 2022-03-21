@@ -21,8 +21,12 @@ export const onAreaOfInterest = async (interaction: SelectMenuInteraction) => {
     await interaction.reply({
       content: `What kind of work are you looking for?`,
       components: [row],
+      ephemeral: true,
     });
   } catch (e) {
-    interaction.followUp("You did not enter any input!");
+    interaction.followUp({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 };

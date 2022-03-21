@@ -24,8 +24,12 @@ export const onExperienceRangeProject = async (
     await interaction.reply({
       content: `What is your project about?`,
       components: [row],
+      ephemeral: true,
     });
   } catch (e) {
-    interaction.followUp("You did not enter any input!");
+    interaction.followUp({
+      content: "You did not enter any input!",
+      ephemeral: true,
+    });
   }
 };
